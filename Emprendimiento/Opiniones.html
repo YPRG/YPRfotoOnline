@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Opiniones sobre YRG Photography</title>
+
+  <!-- Link de Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Tu archivo CSS -->
+  <link rel="stylesheet" href="estilos.css">
+    <link rel="icon" type="image/png" href="c:\Users\Usuario\OneDrive\Pictures\favicon.jpg">
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center mb-4">Opiniones sobre nuestro sitio web</h1>
+    <p class="text-center text-muted">Tu opinión nos ayuda a mejorar nuestro servicio de fotografía para productos online.</p>
+
+    <!-- Formulario -->
+    <div class="card p-4 shadow-sm">
+      <form id="opinionForm">
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Tu nombre:</label>
+          <input type="text" id="nombre" class="form-control" placeholder="Escribe tu nombre" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="opinion" class="form-label">Tu opinión:</label>
+          <textarea id="opinion" class="form-control" rows="4" placeholder="¿Qué opinas de nuestro sitio?" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Enviar opinión</button>
+      </form>
+    </div>
+
+    <!-- Sección de opiniones -->
+    <h3 class="mt-4">Opiniones de los usuarios:</h3>
+    <div id="listaOpiniones"></div>
+  </div>
+
+  <!-- Script para manejar las opiniones -->
+  <script>
+    const form = document.getElementById('opinionForm');
+    const lista = document.getElementById('listaOpiniones');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const nombre = document.getElementById('nombre').value.trim();
+      const opinion = document.getElementById('opinion').value.trim();
+
+      if (nombre && opinion) {
+        const card = document.createElement('div');
+        card.className = 'card p-3 shadow-sm';
+        card.innerHTML = `
+          <h5>${nombre}</h5>
+          <p>${opinion}</p>
+        `;
+        lista.prepend(card);
+        form.reset();
+      }
+    });
+  </script>
+
+  <!-- Script de Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
